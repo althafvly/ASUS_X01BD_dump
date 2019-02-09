@@ -1,0 +1,216 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+# For shipping build only
+#
+# huaqin modify for ZQL1650-29 by lanshiming at 2018/1/23
+
+on early-init
+    mkdir /asusfw 0775 system system
+#Huaqin modify for ZQL1650-96 by lanshiming at 2018/1/30 start
+    mkdir /ADF 0775 system system
+    mkdir /APD 0775 system system
+    mkdir /asdf 0775 system system
+    mkdir /factory 0775 system system
+    mkdir /priv 0775 system system
+#Huaqin modify for ZQL1650-96 by lanshiming at 2018/1/30 end
+
+#Huaqin modify for ZQL1650-361 by chenlingyu at 2018/2/8 start
+on fs
+    wait /dev/block/bootdevice/by-name/asusfw
+    mount ext4 /dev/block/bootdevice/by-name/asusfw /asusfw nosuid nodev noatime barrier=1
+    restorecon_recursive /asusfw
+
+
+#Huaqin modify for ZQL1650-96 by lanshiming at 2018/1/30 start
+    wait /dev/block/bootdevice/by-name/ADF
+    mount ext4 /dev/block/bootdevice/by-name/ADF /ADF nosuid nodev noatime barrier=1
+    restorecon_recursive /ADF
+
+    wait /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev noatime barrier=1
+    restorecon_recursive /APD
+
+    wait /dev/block/bootdevice/by-name/asdf
+    mount ext4 /dev/block/bootdevice/by-name/asdf /asdf nosuid nodev noatime barrier=1
+    restorecon_recursive /asdf
+
+    wait /dev/block/bootdevice/by-name/factory
+    mount ext4 /dev/block/bootdevice/by-name/factory /factory nosuid nodev noatime barrier=1
+    restorecon_recursive /factory
+
+    wait /dev/block/bootdevice/by-name/priv
+    mount ext4 /dev/block/bootdevice/by-name/priv /priv nosuid nodev noatime barrier=1
+    restorecon_recursive /priv
+#Huaqin modify for ZQL1650-96 by lanshiming at 2018/1/30 end
+#Huaqin modify for ZQL1650-361 by chenlingyu at 2018/2/8 end
+
+#Huaqin add for ZQL1650-339 by zhangyongxu at 2018/2/8 start
+    chmod 777 /sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-00/800f000.qcom,spmi:qcom,pm660@0:qcom,qpnp-smb2/demo_app_property
+    chown system system /sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-00/800f000.qcom,spmi:qcom,pm660@0:qcom,qpnp-smb2/demo_app_property
+#Huaqin add for ZQL1650-339 by zhangyongxu at 2018/2/8 end
+
+on post-fs
+    chown system system /asusfw
+    chown system system /asusfw/*
+    chmod 0775 /asusfw
+    chmod 0775 /asusfw/*
+#Huaqin add for ZQL1820-161 by yangzhiyuan at 2018/8/18 begin
+    chown system system /asusfw/asusfw_version
+    chmod 0775 /asusfw/asusfw_version
+#Huaqin add for ZQL1820-161 by yangzhiyuan at 2018/8/18 end
+#Huaqin modify for ZQL1650-96 by lanshiming at 2018/1/30 start
+
+    chown system system /ADF
+    chown system system /ADF/*
+    chmod 0775 /ADF
+    chmod 0775 /ADF/*
+
+    chown system system /APD
+    chown system system /APD/*
+#Huaqin add for ZQL1650-27 by lanshiming at 2018/1/30 start
+    chown system system /APD/DemoVersion.txt
+    chown system system /APD/DemoContent.txt
+    chown system system /APD/config.xml
+    chown system system /APD/Media
+    chown system system /APD/Media/m_01.jpg
+    chown system system /APD/Media/m_02.jpg
+    chown system system /APD/Media/m_03.jpg
+    chown system system /APD/Media/m_04.jpg
+    chown system system /APD/Media/m_05.jpg
+    chown system system /APD/Media/m_06.jpg
+    chown system system /APD/Media/m_07.jpg
+    chown system system /APD/Media/m_08.jpg
+    chown system system /APD/Media/m_09.jpg
+    chown system system /APD/Media/m_10.jpg
+    chown system system /APD/Media/m_11.jpg
+    chown system system /APD/Media/m_12.jpg
+    chown system system /APD/Media/m_13.jpg
+    chown system system /APD/Media/m_14.jpg
+    chown system system /APD/Media/m_15.jpg
+#Huaqin add for TT1184349 by liunianliang at 2018/01/30 start
+    chown system system /APD/Media/m_1.jpg
+    chown system system /APD/Media/m_2.jpg
+    chown system system /APD/Media/m_3.jpg
+    chown system system /APD/Media/m_4.jpg
+    chown system system /APD/Media/m_5.jpg
+    chown system system /APD/Media/m_6.jpg
+    chown system system /APD/Media/m_7.jpg
+    chown system system /APD/Media/m_8.jpg
+    chown system system /APD/Media/m_9.jpg
+    chown system system /APD/Media/m_JonasBlue-ByYourSide-feat-RAYE.mp3
+#Huaqin add for TT1184349 by liunianliang at 2018/01/30 end
+    chown system system /APD/Movies
+    chown system system /APD/Movies/demo-video-screensaver.mp4
+    chown system system /APD/Movies/demo-video-screensaver_fr_FR.srt
+    chown system system /APD/Movies/demo-video-screensaver_hu_HU.srt
+    chown system system /APD/Movies/demo-video-screensaver_in_ID.srt
+    chown system system /APD/Movies/demo-video-screensaver_it_IT.srt
+    chown system system /APD/Movies/demo-video-screensaver_ja_JP.srt
+    chown system system /APD/Movies/demo-video-screensaver_pt_PT.srt
+    chown system system /APD/Movies/demo-video-screensaver_vi_VN.srt
+    chown system system /APD/md5CheckValue.md5
+    chown system system /APD/Movies/demo-video-screensaver_cs_CZ.srt
+    chown system system /APD/Movies/demo-video-screensaver_es_ES.srt
+    chown system system /APD/Movies/demo-video-screensaver_pt_BR.srt
+    chown system system /APD/Movies/demo-video-screensaver_ru_RU.srt
+    chown system system /APD/Movies/demo-video-screensaver_th_TH.srt
+    chown system system /APD/Movies/demo-video-screensaver_zh_TW.srt
+    chown system system /APD/Movies/ZB630KL_ZB631KL_Romanian.srt
+    chmod 0775 /APD/md5CheckValue.md5
+    chmod 0775 /APD/DemoVersion.txt
+    chmod 0775 /APD/DemoContent.txt
+    chmod 0775 /APD/config.xml
+    chmod 0775 /APD/Media
+    chmod 0775 /APD/Media/m_01.jpg
+    chmod 0775 /APD/Media/m_02.jpg
+    chmod 0775 /APD/Media/m_03.jpg
+    chmod 0775 /APD/Media/m_04.jpg
+    chmod 0775 /APD/Media/m_05.jpg
+    chmod 0775 /APD/Media/m_06.jpg
+    chmod 0775 /APD/Media/m_07.jpg
+    chmod 0775 /APD/Media/m_08.jpg
+    chmod 0775 /APD/Media/m_09.jpg
+    chmod 0775 /APD/Media/m_10.jpg
+    chmod 0775 /APD/Media/m_11.jpg
+    chmod 0775 /APD/Media/m_12.jpg
+    chmod 0775 /APD/Media/m_13.jpg
+    chmod 0775 /APD/Media/m_14.jpg
+    chmod 0775 /APD/Media/m_15.jpg
+#Huaqin add for TT1184349 by liunianliang at 2018/04/18 start
+    chmod 0775 /APD/Media/m_1.jpg
+    chmod 0775 /APD/Media/m_2.jpg
+    chmod 0775 /APD/Media/m_3.jpg
+    chmod 0775 /APD/Media/m_4.jpg
+    chmod 0775 /APD/Media/m_5.jpg
+    chmod 0775 /APD/Media/m_6.jpg
+    chmod 0775 /APD/Media/m_7.jpg
+    chmod 0775 /APD/Media/m_8.jpg
+    chmod 0775 /APD/Media/m_9.jpg
+    chmod 0775 /APD/Media/m_JonasBlue-ByYourSide-feat-RAYE.mp3
+#Huaqin add for TT1184349 by liunianliang at 2018/04/18 end
+    chmod 0775 /APD/Movies
+    chmod 0775 /APD/Movies/demo-video-screensaver.mp4
+    chmod 0775 /APD/Movies/demo-video-screensaver_fr_FR.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_hu_HU.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_in_ID.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_it_IT.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_ja_JP.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_pt_PT.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_vi_VN.srt
+#Huaqin add for ZQL1650-27 by lanshiming at 2018/1/30 end
+    chmod 0775 /APD/Movies/demo-video-screensaver_cs_CZ.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_es_ES.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_pt_BR.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_ru_RU.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_th_TH.srt
+    chmod 0775 /APD/Movies/demo-video-screensaver_zh_TW.srt
+    chmod 0775 /APD/Movies/ZB630KL_ZB631KL_Romanian.srt
+    chmod 0775 /APD
+    chmod 0775 /APD/*
+
+    chown system system /asdf
+    chown system system /asdf/*
+    chmod 0775 /asdf
+    chmod 0775 /asdf/*
+
+    chown system system /factory
+    chown system system /factory/*
+    chmod 0775 /factory
+    chmod 0775 /factory/*
+
+    chown system system /priv
+    chown system system /priv/*
+    chmod 0775 /priv
+    chmod 0775 /priv/*
+#Huaqin modify for ZQL1650-96 by lanshiming at 2018/1/30 end
+
+#Huaqin modify for del shipping img logtool and boot auto start by taohuipeng at 20180504 start
+service  getpersistlog /system/bin/getpersistlog
+    disabled
+    class main
+    user root
+    oneshot
+    seclabel u:r:logoem:s0
+#Huaqin modify for del shipping img logtool and boot auto start by taohuipeng at 20180504 end
+
+# Huaqin add for 1263211 by huqian at 2018/12/06 start
+#Huaqin add for ZQL1820-181 by chenqiang at 2018.10.10 start
+on property:sys.huaqin.camera=1
+    chmod 0777 /data/vendor
+    chmod 0777 /data/vendor/camera
+    chmod 0777 /data/vendor/camera/wide_2624x1944.nv21
+    chmod 0777 /data/vendor/camera/tele_4032x3000.nv21
+on property:sys.huaqin.camera=0
+    chmod 0770 /data/vendor/camera
+    chmod 0770 /data/vendor/camera/wide_2624x1944.nv21
+    chmod 0770 /data/vendor/camera/tele_4032x3000.nv21
+#Huaqin add for ZQL1820-181 by chenqiang at 2018.10.10 end
+# Huaqin add for 1263211 by huqian at 2018/12/06 end
+
+#Huaqin add for read countrycode by liunianliang at 2019/01/16 start
+on property:ro.config.versatility=*
+    write /proc/countrycode ${ro.config.versatility}
+#Huaqin add for read countrycode by liunianliang at 2019/01/16 end

@@ -3,9 +3,10 @@ assert(getprop("ro.product.device") == "ASUS_X01BD" || getprop("ro.build.product
     abort("This package is for \"ASUS_X01BD\" devices; this is a \"" + getprop("ro.product.device") + "\"."););
 #UNMOUNT
 ifelse(is_mounted("/system"), unmount("/system"));
+show_progress(1.000000, 0);
 ui_print(" ");
 ui_print(" ");
-ui_print("asus Installer");
+ui_print("qsus Installer");
 ui_print("Built with SuperR's Kitchen");
 ui_print(" ");
 ui_print(" ");
@@ -22,22 +23,24 @@ ifelse(is_mounted("/system"), "", mount("ext4", "EMMC", file_getprop("/tmp/confi
 run_program("/tmp/install/bin/backuptool.sh", "backup");
 #UNMOUNT
 ifelse(is_mounted("/system"), unmount("/system"));
-show_progress(0.750000, 0);
-ui_print("Extracting system...");
+ui_print("Formatting system...");
 ui_print(" ");
-block_image_update(file_getprop("/tmp/config", "system"), package_extract_file("system.transfer.list"), "system.new.dat", "system.patch.dat");
-show_progress(0.020000, 10);
+format("ext4", "EMMC", file_getprop("/tmp/config", "system"), "0", "/system");
+set_progress(0.200000);
 #MOUNT
 ifelse(is_mounted("/system"), "", mount("ext4", "EMMC", file_getprop("/tmp/config", "system"), "/system"));
-run_program("/tmp/install/bin/backuptool.sh", "restore");
-#UNMOUNT
-ifelse(is_mounted("/system"), unmount("/system"));
-show_progress(0.050000, 5);
-ui_print("Extracting boot image..."); ui_print(" "); show_progress(0.050000, 5);
+ui_print("Extracting system...");
+ui_print(" ");
+package_extract_file("system_new.img", file_getprop("/tmp/config", "system"));
+set_progress(0.700000);
+ui_print(" "); ui_print("Extracting boot image..."); ui_print(" ");
 package_extract_file("boot.img", file_getprop("/tmp/config", "boot"));
+set_progress(0.800000);
 #ROOT
 ui_print(" ");
 #BUSYBOX
-show_progress(0.200000, 10);
-ui_print("asus Installed");
+run_program("/tmp/install/bin/backuptool.sh", "restore");
+#UNMOUNT
+ifelse(is_mounted("/system"), unmount("/system"));
 set_progress(1.000000);
+ui_print("qsus Installed");
