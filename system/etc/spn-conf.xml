@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2013,2016, Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ */
+-->
+<spnOverrides>
+    <!-- China -->
+    <spnOverride numeric="46000" spn="China Mobile" />
+    <spnOverride numeric="46001" spn="China Unicom" />
+    <spnOverride numeric="46002" spn="China Mobile" />
+    <spnOverride numeric="46003" spn="China Telecom" />
+    <spnOverride numeric="46005" spn="China Telecom" />
+    <spnOverride numeric="46006" spn="China Unicom" />
+    <spnOverride numeric="46007" spn="China Mobile" />
+    <!-- Taiwan -->
+    <spnOverride numeric="46601" spn="FarEasTone" />
+    <!-- Huaqin modify for 1178890 by meichangjiang at 2018/4/8 start -->
+    <spnOverride numeric="46605" spn="GT 4G" />
+    <!-- Huaqin modify for 1178890 by meichangjiang at 2018/4/8 end -->
+    <spnOverride numeric="46606" spn="Tuntex" />
+    <spnOverride numeric="46688" spn="KG Telecom" />
+    <!-- Huaqin modify for 1181779 by meichangjiang at 2018/4/14 start -->
+    <spnOverride numeric="46689" spn="T star" />
+    <!-- Huaqin modify for 1181779 by meichangjiang at 2018/4/14 end -->
+    <!-- Huaqin modify for 1178472 by zhangchengxiang at 2018/4/3 start -->
+    <spnOverride numeric="46692" spn="Chunghwa Telecom" />
+    <!-- Huaqin modify for 1178472 by zhangchengxiang at 2018/4/3 end -->
+    <spnOverride numeric="46693" spn="MobiTai" />
+    <spnOverride numeric="46697" spn="Taiwan Mobile" />
+    <spnOverride numeric="46699" spn="TransAsia" />
+    <!--Hong Kong -->
+    <spnOverride numeric="45429" spn="PCCW" />
+    <spnOverride numeric="45404" spn="Hutchison"  />
+    <!-- Huaqin modify for 1245888 by kankai at 2018/12/12 start -->
+    <spnOverride numeric="45406" spn="SmarTone HK"  />
+    <!-- Huaqin modify for 1245888 by kankai at 2018/12/12 end -->
+    <!-- Huaqin modify for 1174215 by meichangjiang at 2018/3/28 start -->
+    <spnOverride numeric="51010" spn="TELKOMSEL"  />
+    <!-- Huaqin modify for 1174215 by meichangjiang at 2018/3/28 end -->
+    <!-- Huaqin modify for 1197747 by meichangjiang at 2018/5/16 start -->
+    <spnOverride numeric="45205" spn="VN Vietnamobile"  />
+    <spnOverride numeric="45202" spn="VN VINAPHONE"  />
+    <!-- Huaqin modify for 1197747 by meichangjiang at 2018/5/16 end -->
+    <!-- Huaqin modify for 1199710 by meichangjiang at 2018/5/22 start -->
+    <spnOverride numeric="50218" spn="Umobile"  />
+    <spnOverride numeric="50212" spn="MAXIS"  />
+    <spnOverride numeric="50219" spn="Celcom"  />
+    <!-- Huaqin modify for 1199710 by meichangjiang at 2018/5/22 end -->
+    <!-- Huaqin modify for 1202119 by meichangjiang at 2018/5/28 start -->
+    <spnOverride numeric="52503" spn="M1"  />
+    <!-- Huaqin modify for 1202119 by meichangjiang at 2018/5/28 end -->
+    <!-- Huaqin modify for 1226080 by meichangjiang at 2018/8/7 start -->
+    <spnOverride numeric="44010" spn="NTT DOCOMO"  />
+    <!-- Huaqin modify for 1226080 by meichangjiang at 2018/8/7 end -->
+</spnOverrides>
